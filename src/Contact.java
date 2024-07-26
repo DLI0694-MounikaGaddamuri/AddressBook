@@ -72,4 +72,14 @@ public class Contact {
     public void setZip(String zip) {
         this.zip = zip;
     }
+
+    public void displayDetails(){
+        System.out.println("Name: "+getFirstName()+" "+getLastName());
+        System.out.println("Address: "+getAddress());
+        System.out.println("City: "+getCity());
+        System.out.println("State: "+getState());
+        System.out.println("Zip: "+getZip());
+        System.out.println("Phone Number: "+getPhoneNumber());
+        System.out.println("Email: "+getEmail());
+    }
 }

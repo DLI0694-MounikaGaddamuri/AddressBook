@@ -1,5 +1,7 @@
 import java.util.*;
 public class AddressBookMain {
+
+
     public static void main(String[] args) {
         System.out.println("Welcome to Address Book");
 
@@ -29,6 +31,9 @@ public class AddressBookMain {
 
         System.out.println("Enter Email: ");
         contact1.email = input.nextLine();
+
+        System.out.println("Deatils of the entered Person: ");
+        contact1.displayDetails();
 
         System.out.println("Enter person name to edit their contact: ");
         String editPerson = input.nextLine();
@@ -82,10 +87,19 @@ public class AddressBookMain {
                     contact1.email = input.nextLine();
                     break;
             }
+            System.out.println("After editing the person details: ");
+            contact1.displayDetails();
 
         }
         else System.out.println("Person is not present in the address book");
 
+        System.out.println("Enter person First name to delete the person");
+        String deletePerson = input.nextLine();
 
+        if(contact1.getFirstName().contains(deletePerson))
+            contact1=null;
+
+        System.out.println(contact1);
     }
+
 }
