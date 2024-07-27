@@ -1,105 +1,78 @@
 import java.util.*;
 public class AddressBookMain {
+    Scanner input = new Scanner(System.in);
+    public void  addDetails(ArrayList<Contact> contacts ) {
+        System.out.println("Enter First Name: ");
+        String firstName = input.nextLine();
 
+        System.out.println("Enter Last Name: ");
+        String lastName = input.nextLine();
+
+        System.out.println("Enter Address: ");
+        String address = input.nextLine();
+
+        System.out.println("Enter City: ");
+        String city = input.nextLine();
+
+        System.out.println("Enter State: ");
+        String state = input.nextLine();
+
+        System.out.println("Enter zip: ");
+        String zip = input.nextLine();
+
+        System.out.println("Enter Phone Number: ");
+        String phoneNumber = input.nextLine();
+
+        System.out.println("Enter Email: ");
+        String email = input.nextLine();
+
+        contacts.add(new Contact(firstName, lastName, address, city, state, zip, phoneNumber, email));
+    }
 
     public static void main(String[] args) {
         System.out.println("Welcome to Address Book");
-
         Scanner input = new Scanner(System.in);
+        Methods method = new Methods();
+        Contact obj = new Contact();
+        ArrayList<Contact> contacts = new ArrayList<Contact>();
 
-        Contact contact1 = new Contact();
-        System.out.println("Enter First Name: ");
-        contact1.firstName = input.nextLine();
-
-        System.out.println("Enter Last Name: ");
-        contact1.lastName = input.nextLine();
-
-        System.out.println("Enter Address: ");
-        contact1.address = input.nextLine();
-
-        System.out.println("Enter City: ");
-        contact1.city = input.nextLine();
-
-        System.out.println("Enter State: ");
-        contact1.state = input.nextLine();
-
-        System.out.println("Enter zip: ");
-        contact1.zip = input.nextLine();
-
-        System.out.println("Enter Phone Number: ");
-        contact1.phoneNumber = input.nextLine();
-
-        System.out.println("Enter Email: ");
-        contact1.email = input.nextLine();
-
-        System.out.println("Deatils of the entered Person: ");
-        contact1.displayDetails();
-
-        System.out.println("Enter person name to edit their contact: ");
-        String editPerson = input.nextLine();
-
-        if(contact1.getFirstName().contains(editPerson)){
-            System.out.println("Enter contact details to edit: ");
-
-            System.out.println("Enter the details you want to edit: ");
-            String editDetails= input.nextLine();
-
-            switch(editDetails) {
-
-                case "firstName":
-                    System.out.println("Enter First Name: ");
-                    contact1.firstName = input.nextLine();
-                    break;
-
-                case "lastName":
-                    System.out.println("Enter Last Name: ");
-                    contact1.lastName = input.nextLine();
-                    break;
-
-                case "Address":
-                    System.out.println("Enter Address: ");
-                    contact1.address = input.nextLine();
-                    break;
-
-                case "City":
-                    System.out.println("Enter City: ");
-                    contact1.city = input.nextLine();
-                    break;
-
-                case "State":
-                    System.out.println("Enter State: ");
-                    contact1.state = input.nextLine();
-                    break;
-
-                case "zip":
-                    System.out.println("Enter zip: ");
-                    contact1.zip = input.nextLine();
-                    break;
+        char ch;
+        do{
+            System.out.println("1. Adding person's data.");
+            System.out.println("2. Editing person's data.");
+            System.out.println("3. Deleting person's data.");
+            System.out.println("4. Display person's data.");
+            System.out.println("5. Exit.");
+            //obj.displayDetails();
+            System.out.println("Enter your choice: ");
+            int choice = input.nextInt();
 
 
-                case "PhoneNumber":
-                    System.out.println("Enter Phone Number: ");
-                    contact1.phoneNumber = input.nextLine();
-                    break;
+            switch(choice){
+                case 1: method.addDetails(contacts );
+                        break;
 
-                case "Email":
-                    System.out.println("Enter Email: ");
-                    contact1.email = input.nextLine();
-                    break;
+                case 2: method.editDetails(contacts );
+                        break;
+
+                case 3: method.deleteDetails(contacts);
+                        break;
+
+                case 4: for(Contact c: contacts)
+                            c.displayDetails();
+                        break;
+
+                case 5: System.exit(0);
+                        break;
             }
-            System.out.println("After editing the person details: ");
-            contact1.displayDetails();
+            //obj.displayDetails();
+            System.out.println("Do you want to continue: If yes then enter y else enter n");
+            ch=input.next().charAt(0);
+        }while(ch=='y');
 
-        }
-        else System.out.println("Person is not present in the address book");
-
-        System.out.println("Enter person First name to delete the person");
-        String deletePerson = input.nextLine();
-
-        if(contact1.getFirstName().contains(deletePerson))
-            contact1=null;
-
-        System.out.println(contact1);
     }
-
 }
+
+
+
+
